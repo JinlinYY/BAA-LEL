@@ -55,7 +55,7 @@ data/IMAplusplus/
 
 Run `python scripts/prepare_imaplusplus.py --root data/IMAplusplus`. It selects one annotation per image using the declared consensus/annotator ordering, writes `selected_masks/`, and creates `metadata/clinical_binary.csv` and `metadata/clinical_multiclass.csv`. Binary labels are benign/malignant; three-class labels are Benign/Malignant/Indeterminate. The metadata retains `group_id` for grouped splitting and excludes it from clinical features. Available patient identity takes priority over lesion identity, with image identity as the final fallback.
 
-The image–tabular experiment referred to as ISIC2018 in the supplied manuscript uses IMA++ according to the authors. It is represented under its actual name here. This clarification does not establish which of the binary or three-class configurations generated every published table entry; confirm the endpoint when comparing numerical results.
+The image–tabular experiment referred to as ISIC2018 in the manuscript uses IMA++. It is represented under its actual name here. This clarification does not establish which of the binary or three-class configurations generated every published table entry; confirm the endpoint when comparing numerical results.
 
 ## ISIC2018 segmentation
 

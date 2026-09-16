@@ -12,7 +12,7 @@ See the [model description](model.md), [experimental protocols](experiments.md),
 
 ## Data and reproducibility
 
-HER2USC and LMNUSC are private clinical cohorts. BrEaST supports joint segmentation and binary diagnosis; BUSI supports image-only segmentation. The authors identified IMA++ as the actual source of the cross-domain experiment labeled ISIC2018 in the supplied manuscript. Use the IMA++ configurations for that dataset; the ISIC2018 segmentation configuration is separate.
+HER2USC and LMNUSC are private clinical cohorts. BrEaST supports joint segmentation and binary diagnosis; BUSI supports image-only segmentation. The cross-domain experiment labeled ISIC2018 in the manuscript uses IMA++. Use the IMA++ configurations for that dataset; the ISIC2018 segmentation configuration is separate.
 
 Datasets, clinical records, patient splits, trained weights, and the manuscript PDF are not distributed. The runnable configurations do not certify numerical reproduction of all manuscript tables. Fold-validation checkpoint selection and nested evaluation are distinct protocols. The IMA++ configurations use ResNet-50, while the manuscript's common settings describe MedSAM. These distinctions are documented in the experimental guide.
 

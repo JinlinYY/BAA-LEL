@@ -2,7 +2,7 @@
 
 **Boundary-Uncertainty-Aware Lesion Evidence Learning for Breast Ultrasound Segmentation and Multimodal Classification**
 
-PyTorch research implementation accompanying the manuscript by Jinlin Ye, Deming Hu, Yuhan Liu, Shangjie Ren, Changjun Wang, Yidong Zhou, and Wei Zhang.
+PyTorch implementation of BUA-LEL for joint lesion segmentation and multimodal classification.
 
 [Quick start](doc/quickstart.md) · [Data preparation](doc/data.md) · [Experimental protocols](doc/experiments.md) · [Baseline methods](doc/baselines.md) · [Model implementation](doc/model.md)
 
@@ -45,7 +45,7 @@ Acquire the MedSAM ViT-B pretrained weights from the [MedSAM project](https://gi
 | IMA++ | Dermoscopy + structured metadata | Segmentation + binary or three-class diagnosis |
 | ISIC2018 | Dermoscopy only | Additional segmentation configuration |
 
-**Dataset naming:** the manuscript supplied with this implementation labels its cross-domain experiment “ISIC2018”; the authors identified its actual data source as **IMA++**. Use `configs/imaplusplus.yaml` or `configs/imaplusplus_multiclass.yaml` for that data. `configs/isic2018.yaml` is a separate segmentation configuration and does not reproduce the manuscript's image–tabular result.
+**Dataset naming:** the cross-domain experiment labeled “ISIC2018” in the manuscript uses **IMA++**. Use `configs/imaplusplus.yaml` or `configs/imaplusplus_multiclass.yaml` for that data. `configs/isic2018.yaml` is a separate segmentation configuration and does not reproduce the manuscript's image–tabular result.
 
 See [data.md](doc/data.md) for schemas, label mappings, patient grouping, and exclusion of outcome-revealing variables. Private clinical cohorts and their patient split manifests are not included.
 

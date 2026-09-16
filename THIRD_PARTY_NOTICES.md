@@ -14,4 +14,4 @@ The baseline implementations comprise local paper-based models and source-inform
 
 ## Data and figures
 
-Datasets, annotations, clinical records, source manuscript PDF, case-level results, and model weights are not distributed. `assets/framework.png` is the author-provided method illustration. Dataset access and reuse remain governed by the respective providers.
+Datasets, annotations, clinical records, source manuscript PDF, case-level results, and model weights are not distributed. `assets/framework.png` illustrates the BUA-LEL architecture. Dataset access and reuse remain governed by the respective providers.
