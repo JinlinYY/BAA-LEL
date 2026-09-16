@@ -1,0 +1,4 @@
+extends: ../her2usc.yaml
+experiment_name: geometry_only
+save_dir: outputs/ablations/geometry_only
+use_z_unc: false

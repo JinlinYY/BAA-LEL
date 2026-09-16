@@ -1,0 +1,4 @@
+extends: ../her2usc.yaml
+experiment_name: ambiguity_only
+save_dir: outputs/ablations/ambiguity_only
+use_z_geo: false

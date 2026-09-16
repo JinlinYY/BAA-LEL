@@ -1,0 +1,9 @@
+extends: busi.yaml
+dataset_name: ISIC2018
+image_dir: data/ISIC2018/images
+mask_dir: data/ISIC2018/masks
+clinical_excel: data/ISIC2018/clinical.csv
+save_dir: outputs/ISIC2018/segmentation
+fold_manifest_path: outputs/splits/ISIC2018_seed42.json
+image_mode: rgb
+num_classes: 1

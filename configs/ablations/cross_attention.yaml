@@ -1,0 +1,4 @@
+extends: ../her2usc.yaml
+experiment_name: cross_attention
+save_dir: outputs/ablations/cross_attention
+fusion_mode: cross_attn

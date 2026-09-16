@@ -1,0 +1,5 @@
+extends: ../her2usc.yaml
+experiment_name: core_only
+save_dir: outputs/ablations/core_only
+enabled_regions:
+- core

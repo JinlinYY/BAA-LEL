@@ -1,0 +1,6 @@
+extends: ../her2usc.yaml
+experiment_name: clinical_only
+save_dir: outputs/ablations/clinical_only
+modality: clinical_only
+training_task: classification_only
+late_raw_clinical_fusion: false

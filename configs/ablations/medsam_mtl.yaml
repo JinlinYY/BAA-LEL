@@ -1,0 +1,6 @@
+extends: ../her2usc.yaml
+experiment_name: medsam_mtl
+save_dir: outputs/ablations/medsam_mtl
+model_family: medsam_standard_decoder_fusion
+late_raw_clinical_fusion: false
+lambda_anchor: 0.0

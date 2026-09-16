@@ -1,0 +1,4 @@
+extends: ../her2usc.yaml
+experiment_name: frozen_encoder
+save_dir: outputs/ablations/frozen_encoder
+unfreeze_medsam_last_n: 0

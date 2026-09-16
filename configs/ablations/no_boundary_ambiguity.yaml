@@ -1,0 +1,4 @@
+extends: ../her2usc.yaml
+experiment_name: no_boundary_ambiguity
+save_dir: outputs/ablations/no_boundary_ambiguity
+use_boundary_ambiguity: false

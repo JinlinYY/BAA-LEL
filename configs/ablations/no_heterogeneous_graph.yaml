@@ -1,0 +1,4 @@
+extends: ../her2usc.yaml
+experiment_name: no_heterogeneous_graph
+save_dir: outputs/ablations/no_heterogeneous_graph
+fusion_mode: concat

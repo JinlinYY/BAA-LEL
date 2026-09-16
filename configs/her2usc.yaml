@@ -1,0 +1,10 @@
+extends: base.yaml
+dataset_name: HER2USC
+num_classes: 3
+image_dir: data/HER2USC/images
+mask_dir: data/HER2USC/masks
+clinical_excel: data/HER2USC/clinical.csv
+save_dir: outputs/HER2USC/bua_lel
+fold_manifest_path: outputs/splits/HER2USC_seed42.json
+benchmark_output_root: outputs/comparison
+clinical_preprocessing_profile: complete_observed

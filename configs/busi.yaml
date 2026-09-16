@@ -1,0 +1,17 @@
+extends: base.yaml
+dataset_name: BUSI
+num_classes: 3
+image_dir: data/BUSI/images
+mask_dir: data/BUSI/masks
+clinical_excel: data/BUSI/clinical.csv
+save_dir: outputs/BUSI/bua_lel
+fold_manifest_path: outputs/splits/BUSI_seed42.json
+benchmark_output_root: outputs/comparison
+modality: ultrasound_only
+late_raw_clinical_fusion: false
+training_task: segmentation_only
+score_w_seg: 1.0
+score_w_cls: 0.0
+save_final_oof_roc: false
+save_oof_npz: false
+architecture_profile: extended

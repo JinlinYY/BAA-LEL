@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use BUA-LEL in your research, please cite this software and the accompanying manuscript."
+title: "BUA-LEL: Boundary-Uncertainty-Aware Lesion Evidence Learning for Breast Ultrasound Segmentation and Multimodal Classification"
+type: software
+authors:
+  - family-names: Ye
+    given-names: Jinlin
+  - family-names: Hu
+    given-names: Deming
+  - family-names: Liu
+    given-names: Yuhan
+  - family-names: Ren
+    given-names: Shangjie
+  - family-names: Wang
+    given-names: Changjun
+  - family-names: Zhou
+    given-names: Yidong
+  - family-names: Zhang
+    given-names: Wei
+repository-code: "https://github.com/JinlinYY/BUA-LEL"
+license: MIT
+version: 0.1.0

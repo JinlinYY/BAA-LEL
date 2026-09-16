@@ -1,0 +1,4 @@
+extends: ../her2usc.yaml
+experiment_name: gated_fusion
+save_dir: outputs/ablations/gated_fusion
+fusion_mode: gate

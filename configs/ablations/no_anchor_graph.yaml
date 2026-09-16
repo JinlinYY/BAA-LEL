@@ -1,0 +1,4 @@
+extends: ../her2usc.yaml
+experiment_name: no_anchor_graph
+save_dir: outputs/ablations/no_anchor_graph
+use_anchor_graph: false

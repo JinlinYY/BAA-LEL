@@ -1,0 +1,5 @@
+extends: ../her2usc.yaml
+experiment_name: peritumoral_only
+save_dir: outputs/ablations/peritumoral_only
+enabled_regions:
+- peritumoral

@@ -1,0 +1,5 @@
+-r requirements.txt
+timm>=0.9,<2
+einops>=0.6
+# AMF-MedIT requires mamba-ssm for research training; install separately
+# in a compatible Linux/CUDA environment (see doc/baselines.md).

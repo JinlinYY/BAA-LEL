@@ -1,0 +1,5 @@
+extends: ../her2usc.yaml
+experiment_name: resnet50_backbone
+save_dir: outputs/ablations/resnet50_backbone
+visual_backbone: imagenet_resnet50
+backbone_unfreeze_policy: last_bottleneck

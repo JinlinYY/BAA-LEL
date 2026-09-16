@@ -1,0 +1,6 @@
+extends: ../her2usc.yaml
+experiment_name: full_finetuning
+save_dir: outputs/ablations/full_finetuning
+freeze_medsam: false
+unfreeze_medsam_last_n: 0
+medsam_activation_checkpointing: true

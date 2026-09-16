@@ -1,0 +1,5 @@
+extends: imaplusplus.yaml
+num_classes: 3
+clinical_excel: data/IMAplusplus/metadata/clinical_multiclass.csv
+save_dir: outputs/IMAplusplus/multiclass
+fold_manifest_path: outputs/splits/IMAplusplus_multiclass_seed42.json

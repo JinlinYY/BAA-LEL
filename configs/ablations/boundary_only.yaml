@@ -1,0 +1,5 @@
+extends: ../her2usc.yaml
+experiment_name: boundary_only
+save_dir: outputs/ablations/boundary_only
+enabled_regions:
+- boundary

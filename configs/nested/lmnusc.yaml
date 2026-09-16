@@ -1,0 +1,80 @@
+dataset: LMNUSC
+method: bua_lel
+data_root: data/source
+output_root: outputs/nested/LMNUSC
+split_root: outputs/nested/splits
+seed: 42
+folds: 5
+epochs: 120
+patience: 20
+batch_size: 1
+num_workers: 0
+grad_accum_steps: 4
+lr: 5.0e-05
+weight_decay: 0.0001
+medsam_checkpoint: checkpoints/medsam_vit_b.pth
+inner_validation_fraction: 0.2
+unfreeze_medsam_last_n: 1
+lambda_anchor: 0.01
+cls_lr_mult: 1.0
+late_raw_clinical_fusion: true
+keep_fold_checkpoints: true
+architecture_profile: paper
+classifier_fused_dim: 128
+fixed_clinical_category_schema: true
+clinical_category_schema:
+  象限:
+  - 上
+  - 下
+  - 中心
+  - 内
+  - 内上
+  - 内下
+  - 外
+  - 外上
+  - 外下
+  axi评估:
+  - '0'
+  - '1'
+  - MET
+  浸润/原位:
+  - 原位
+  - 浸润
+  组织学分型:
+  - 导管内癌
+  - 小叶癌
+  - 非特殊型
+  - 特殊型
+  - 混合型
+  - 其他浸润癌
+  组织学分级:
+  - 低分化
+  - 中分化
+  - 高分化
+  ER:
+  - '0'
+  - 弱阳
+  - 中阳
+  - 强阳
+  - 中-弱阳
+  - 弱-中阳
+  - 中-强阳
+  - 强-中阳
+  PR:
+  - '0'
+  - 弱阳
+  - 中阳
+  - 强阳
+  - 中-弱阳
+  - 弱-中阳
+  - 中-强阳
+  - 强-中阳
+  AR:
+  - '0'
+  - 弱阳
+  - 中阳
+  - 强阳
+  - 中-弱阳
+  - 弱-中阳
+  - 中-强阳
+  - 强-中阳
