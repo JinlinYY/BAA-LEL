@@ -4,7 +4,7 @@
 
 PyTorch research implementation accompanying the manuscript by Jinlin Ye, Deming Hu, Yuhan Liu, Shangjie Ren, Changjun Wang, Yidong Zhou, and Wei Zhang.
 
-[中文说明](doc/README_zh.md) · [Data preparation](doc/data.md) · [Experimental protocols](doc/experiments.md) · [Baseline methods](doc/baselines.md) · [Model implementation](doc/model.md)
+[Quick start](doc/quickstart.md) · [Data preparation](doc/data.md) · [Experimental protocols](doc/experiments.md) · [Baseline methods](doc/baselines.md) · [Model implementation](doc/model.md)
 
 ![BUA-LEL framework](assets/framework.png)
 
@@ -80,7 +80,7 @@ Training writes fold checkpoints, case predictions, per-fold metrics, and cross-
 BUA-LEL/
 ├── README.md, LICENSE, CITATION.cff, requirements.txt
 ├── doc/                    # Data, method, protocols, baseline provenance
-├── assets/                 # Dataset-free framework illustration
+├── assets/                 # Method illustration
 ├── configs/                # Dataset and ablation configurations
 ├── bua_lel/
 │   ├── data/               # Matched image/clinical data and fold preprocessing

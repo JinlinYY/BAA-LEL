@@ -33,7 +33,7 @@ def read_excel_df(clinical_excel: str) -> pd.DataFrame:
 def convert_labels(raw_labels: np.ndarray) -> np.ndarray:
     s = pd.Series(raw_labels)
     if s.isna().any():
-        raise ValueError("标签列存在 NaN")
+        raise ValueError("The label column contains NaN values")
     try:
         labels = s.astype(float).astype(int).to_numpy()
     except Exception:
@@ -42,7 +42,7 @@ def convert_labels(raw_labels: np.ndarray) -> np.ndarray:
         mapped = s_str.map(mapping)
         if mapped.isna().any():
             bad = s_str[mapped.isna()].value_counts().head(20)
-            raise ValueError("无法识别的标签: \n" + str(bad))
+            raise ValueError("Unrecognized labels: \n" + str(bad))
         labels = mapped.astype(int).to_numpy()
 
     if np.any(labels < 0):
@@ -123,5 +123,5 @@ def fit_fold_num_scaler(clinical_excel: str, train_pids: Set[str], exclude_colum
 def subset_by_pid_set(ds: DualTaskDataset, pid_set: Set[str]) -> Subset:
     idxs = [i for i, pid in enumerate(ds.valid_pids) if pid in pid_set]
     if len(idxs) == 0:
-        raise RuntimeError("subset_by_pid_set 得到空集合：请检查 pid 交集是否正确")
+        raise RuntimeError("No matching cases in subset_by_pid_set; check the case identifier intersection")
     return Subset(ds, idxs)

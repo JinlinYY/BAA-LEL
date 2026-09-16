@@ -220,7 +220,7 @@ def load_clinical_frame(
         }
         drop = [c for c in frame.columns if str(c).strip().casefold() in excluded]
     else:
-        drop = [frame.columns[-1]] + (["ID", "文字"] if key == "lmnusc" else [])
+        drop = [frame.columns[-1]] + (["ID", "\u6587\u5b57"] if key == "lmnusc" else [])
     frame[pid_col] = frame[pid_col].astype(str).str.strip()
     frame = frame.set_index(pid_col).drop(columns=[c for c in drop if c in frame.columns])
     return frame.reindex([r.pid for r in records])

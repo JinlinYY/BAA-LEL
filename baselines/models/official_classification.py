@@ -222,7 +222,7 @@ class CNNViTImageEncoder(nn.Module):
         return self.transformer(tokens)[:, 0]
 
 
-HER2_NODE_NAMES = ("Age", "乳房手术", "腋窝手术", "病理学类型", "size", "diff", "乳头或皮肤受累", "LVI", "ER", "PR", "Ki-67", "EGFR")
+HER2_NODE_NAMES = ("Age", "\u4e73\u623f\u624b\u672f", "\u814b\u7a9d\u624b\u672f", "\u75c5\u7406\u5b66\u7c7b\u578b", "size", "diff", "\u4e73\u5934\u6216\u76ae\u80a4\u53d7\u7d2f", "LVI", "ER", "PR", "Ki-67", "EGFR")
 HER2_CAUSAL_EDGES = ((3, 10), (4, 10), (5, 10), (10, 7), (7, 1), (7, 2), (6, 1), (6, 2), (4, 1), (4, 2))
 
 
@@ -255,7 +255,7 @@ class KMNetClassifier(nn.Module):
     @staticmethod
     def _semantic_edges(names: Sequence[str]):
         normalized = [str(name).lower().replace("（cm）", "").replace("%", "") for name in names]
-        aliases = {"size": ("size", "大小", "极径"), "diff": ("diff", "分化"), "skin": ("乳头", "皮肤"), "lvi": ("lvi",), "ki67": ("ki-67", "ki67"), "breast": ("乳房手术",), "axilla": ("腋窝手术",), "pathology": ("病理",)}
+        aliases = {"size": ("size", "\u5927\u5c0f", "\u6781\u5f84"), "diff": ("diff", "\u5206\u5316"), "skin": ("\u4e73\u5934", "\u76ae\u80a4"), "lvi": ("lvi",), "ki67": ("ki-67", "ki67"), "breast": ("\u4e73\u623f\u624b\u672f",), "axilla": ("\u814b\u7a9d\u624b\u672f",), "pathology": ("\u75c5\u7406",)}
         found = {key: next((i for i, name in enumerate(normalized) if any(alias in name for alias in values)), None) for key, values in aliases.items()}
         semantic = (("pathology", "ki67"), ("size", "ki67"), ("diff", "ki67"), ("ki67", "lvi"), ("lvi", "breast"), ("lvi", "axilla"), ("skin", "breast"), ("skin", "axilla"), ("size", "breast"), ("size", "axilla"))
         return [(found[a], found[b]) for a, b in semantic if found[a] is not None and found[b] is not None]

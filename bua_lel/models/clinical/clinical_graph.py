@@ -10,21 +10,21 @@ class ClinicalVariableGraphEncoder(nn.Module):
     """
     PyG-based prior-guided clinical graph encoder.
 
-    输入:
+    Inputs:
         c_obs: [B, clinical_dim]
 
-    图构建:
-        每个病人构建一个 12 节点临床图；
-        每个节点复制该病人的完整 clinical vector；
-        节点之间按照医学先验边连接；
-        可选加入反向边和自环。
+    Graph construction:
+        Construct a 12-node clinical graph for each patient.
+        Initialize each node with the patient's complete clinical vector.
+        Connect nodes using the medical-prior edges.
+        Optionally include reverse edges and self-loops.
 
-    输出:
+    Outputs:
         clinical_global: [B, graph_dim]
         clinical_nodes:  [B, 12, graph_dim]
         clinical_node_attn: [B, 12]
 
-    依赖:
+    Dependencies:
         torch_geometric.data.Data
         torch_geometric.data.Batch
         torch_geometric.nn.GCNConv
@@ -33,12 +33,12 @@ class ClinicalVariableGraphEncoder(nn.Module):
 
     DEFAULT_KMNET_NODE_NAMES = [
         "Age",
-        "乳房手术",
-        "腋窝手术",
-        "病理学类型",
+        "\u4e73\u623f\u624b\u672f",
+        "\u814b\u7a9d\u624b\u672f",
+        "\u75c5\u7406\u5b66\u7c7b\u578b",
         "size（cm）",
         "diff",
-        "乳头或皮肤受累",
+        "\u4e73\u5934\u6216\u76ae\u80a4\u53d7\u7d2f",
         "LVI",
         "ER",
         "PR",
@@ -47,16 +47,16 @@ class ClinicalVariableGraphEncoder(nn.Module):
     ]
 
     DEFAULT_KMNET_CAUSAL_EDGES = [
-        ("病理学类型", "Ki-67%"),
+        ("\u75c5\u7406\u5b66\u7c7b\u578b", "Ki-67%"),
         ("size（cm）", "Ki-67%"),
         ("diff", "Ki-67%"),
         ("Ki-67%", "LVI"),
-        ("LVI", "乳房手术"),
-        ("LVI", "腋窝手术"),
-        ("乳头或皮肤受累", "乳房手术"),
-        ("乳头或皮肤受累", "腋窝手术"),
-        ("size（cm）", "乳房手术"),
-        ("size（cm）", "腋窝手术"),
+        ("LVI", "\u4e73\u623f\u624b\u672f"),
+        ("LVI", "\u814b\u7a9d\u624b\u672f"),
+        ("\u4e73\u5934\u6216\u76ae\u80a4\u53d7\u7d2f", "\u4e73\u623f\u624b\u672f"),
+        ("\u4e73\u5934\u6216\u76ae\u80a4\u53d7\u7d2f", "\u814b\u7a9d\u624b\u672f"),
+        ("size（cm）", "\u4e73\u623f\u624b\u672f"),
+        ("size（cm）", "\u814b\u7a9d\u624b\u672f"),
     ]
 
     def __init__(

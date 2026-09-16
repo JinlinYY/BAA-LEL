@@ -9,4 +9,4 @@ fold_manifest_path: outputs/splits/LMNUSC_seed42.json
 benchmark_output_root: outputs/comparison
 clinical_exclude_columns:
 - ID
-- 文字
+- "\u6587\u5B57"

@@ -14,4 +14,4 @@ The baseline implementations comprise local paper-based models and source-inform
 
 ## Data and figures
 
-Datasets, annotations, clinical records, source manuscript PDF, case-level results, and model weights are not distributed. `assets/framework.png` is a schematic drawn from the method description and contains no patient images. Dataset access and reuse remain governed by the respective providers.
+Datasets, annotations, clinical records, source manuscript PDF, case-level results, and model weights are not distributed. `assets/framework.png` is the author-provided method illustration. Dataset access and reuse remain governed by the respective providers.

@@ -613,7 +613,7 @@ class BUALEL(nn.Module):
 
     def forward_cls_with_region_feats(self, x_img, c_obs, m, region_feats_override):
         """
-        前向分类分支，用于局部扰动分析，允许替换 region_feats
+        Classification forward pass for local perturbation analysis with optional region_feats replacement
         """
         B = x_img.shape[0]
         enc_out = self.encoder(x_img, return_dict=True)

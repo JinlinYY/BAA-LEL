@@ -2,7 +2,7 @@ from typing import Tuple
 import torch.nn as nn
 
 def freeze_bn_running_stats(model: nn.Module):
-    """冻结 BN 的 running mean/var，减少小 batch 波动（不会冻结权重）"""
+    """Freeze BatchNorm running statistics to stabilize small batches without freezing weights"""
     for m in model.modules():
         if isinstance(m, (nn.BatchNorm1d, nn.BatchNorm2d, nn.BatchNorm3d)):
             m.eval()
