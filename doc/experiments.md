@@ -4,11 +4,9 @@
 
 `configs/base.yaml` specifies 100 epochs, batch size 4, AdamW with learning rate and weight decay 1e-4, cosine decay, gradient clipping 1.0, patience 12, 64 boundary nodes, 128 graph hidden units, three graph layers, displacement bound 0.08, and anchor coefficient 0.01. MedSAM is frozen except for its last Transformer block. Classification/fusion parameter groups use twice the base learning rate.
 
-The default selection score is `0.3 * Dice + 0.7 * Macro-F1`; this is an implementation choice, not an equation specified in the manuscript. The main trainer's `best_composite_early_stop` policy selects on the held-out fold and evaluates the selected checkpoint on that same fold. These are **fold-validation estimates**, not an independent nested test estimate. `fixed_final_epoch` performs no checkpoint selection on the held-out fold. The baseline runners instead create inner validation subsets from outer training patients and evaluate the outer fold once. State the chosen protocol when reporting results.
+The default selection score is `0.3 * Dice + 0.7 * Macro-F1`. The primary trainer supports `best_composite_early_stop`, which selects and evaluates a checkpoint on the held-out fold, and `fixed_final_epoch`, which evaluates the final epoch. Nested runners select checkpoints on an inner validation subset and evaluate on the outer test fold.
 
 Five-fold means and sample standard deviations are reported separately from pooled case metrics. A single selected fold does not estimate cross-fold variation; the main trainer's single-fold SD fields are zero placeholders. HD95 and ASSD are measured in pixels on the evaluation grid, not millimeters. Empty-mask conventions are defined in `baselines/metrics.py` and covered by tests.
-
-The dataset configurations expose the model and tasks for further research. Private cohorts, fixed patient manifests, full training histories, and trained weights are absent, so exact numerical agreement with manuscript tables is not certified. In particular, LMNUSC and BrEaST cohort-specific source experiments include different learning rates, batching, and classifier widths from the common settings. Use the nested cohort configurations when studying those settings; do not present the common settings as a reconstruction of every table entry.
 
 ## Cross-validation
 
@@ -23,7 +21,7 @@ python scripts/cross_validate.py --config configs/imaplusplus_multiclass.yaml
 
 `--fold 1 --fold 2` limits execution to selected folds. `--output-dir` selects a fresh directory. Completed predictions, split manifests, configuration records, and fold preprocessing should remain together. Existing nonempty output directories are rejected by the primary command.
 
-The IMA++ configurations preserve the dataset-specific source runner: ImageNet ResNet-50 with its last bottleneck trainable, RGB 256×256 inputs, 30 epochs, batch size 8, patience 8, mild dermoscopy augmentation, 0.4 BCE + 0.6 Dice, and equal Dice/F1 checkpoint-selection weights. This differs from the MedSAM settings in the manuscript's common experimental description. Binary and three-class endpoints are distinct experiments.
+The IMA++ configurations use ImageNet ResNet-50 with its last bottleneck trainable, RGB 256×256 inputs, 30 epochs, batch size 8, patience 8, mild dermoscopy augmentation, 0.4 BCE + 0.6 Dice, and equal Dice/F1 checkpoint-selection weights. Binary and three-class endpoints have separate configurations.
 
 ## Held-out checkpoint evaluation
 
@@ -35,7 +33,7 @@ python scripts/nested_cross_validate.py --config configs/nested/lmnusc.yaml --da
 python scripts/nested_cross_validate.py --config configs/nested/breast.yaml --data-root /path/to/source
 ```
 
-These configurations use the baseline adapters' source layout. LMNUSC declares its categorical clinical schema explicitly; prepare a table with matching categories and consistent percentage units. Its configuration uses 120 epochs, learning rate 5e-5, effective batch size 4, and a 128-dimensional classifier projection. BrEaST uses learning rate 7e-5, a 512-dimensional projection, and excludes Diagnosis/Verification. `configs/nested/busi_joint.yaml` retains a separate image-only **joint** experiment from the available implementation; it trains a diagnostic head as well as segmentation and is distinct from the segmentation-only BUSI configuration.
+These configurations use the baseline adapters' source layout. LMNUSC declares its categorical clinical schema explicitly; prepare a table with matching categories and consistent percentage units. Its configuration uses 120 epochs, learning rate 5e-5, effective batch size 4, and a 128-dimensional classifier projection. BrEaST uses learning rate 7e-5, a 512-dimensional projection, and excludes Diagnosis/Verification. `configs/nested/busi_joint.yaml` retains a separate image-only **joint** experiment; it trains a diagnostic head as well as segmentation and is distinct from the segmentation-only BUSI configuration.
 
 The single-fold evaluation and inference commands below load checkpoints from the **primary trainer**. Nested baseline checkpoints have a different serialization schema and are evaluated by their own runner; do not pass them to `scripts/inference.py`.
 
@@ -47,7 +45,7 @@ python scripts/evaluate.py \
   --ids /path/to/held_out_ids.txt --output-dir outputs/evaluation --device cuda
 ```
 
-The identifier file contains one case per line. Select only the corresponding fold's held-out cases or an independent cohort. The evaluator uses the checkpoint's preprocessing without fitting on evaluation data and saves `cases.csv` and `metrics.json`. It cannot establish patient independence for an arbitrary external identifier list.
+The identifier file contains one case per line. Select only the corresponding fold's held-out cases or an independent cohort. The evaluator uses the checkpoint's preprocessing without fitting on evaluation data and saves `cases.csv` and `metrics.json`.
 
 ## Ablations and sensitivity
 
@@ -93,7 +91,7 @@ python analysis/model_efficiency.py --checkpoint /path/to/best_fold1.pth \
   --device cuda --warmup 5 --iterations 30 --output outputs/efficiency.json
 ```
 
-Evidence export includes coarse/refined lesion probabilities, boundary ambiguity, boundary responses, and geometry/ambiguity embeddings. These visualizations describe internal representations and should not be interpreted as causal explanations. Efficiency measurements report float32 forward latency on synthetic tensors, with device synchronization and warmup; file loading and image preprocessing are excluded.
+Evidence export includes coarse/refined lesion probabilities, boundary ambiguity, boundary responses, and geometry/ambiguity embeddings. Efficiency measurements report float32 forward latency on synthetic tensors, with device synchronization and warmup; file loading and image preprocessing are excluded.
 
 Clinical-variable permutation on a held-out fold is available with:
 

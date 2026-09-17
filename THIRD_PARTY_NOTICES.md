@@ -10,7 +10,7 @@ MedSAM and torchvision pretrained models are external dependencies. No encoder w
 
 ## Baseline implementations
 
-The baseline implementations comprise local paper-based models and source-informed adaptations. Their architectural references and assumptions are documented in [doc/baselines.md](doc/baselines.md) and `baselines/models/__init__.py`. The source-informed TransUNet adapter is independently implemented here; no original TransUNet package is vendored. The same distinction applies to the independent adaptations of AAU-Net, HyperFusion, and MAP. MIT does not relicense external author repositories. Obtain external code separately if an experiment requires those authors' original implementations.
+The baseline implementations include paper-based models and adaptations. Architecture references are listed in [doc/baselines.md](doc/baselines.md) and `baselines/models/__init__.py`. TransUNet, AAU-Net, HyperFusion, and MAP use independent adaptations. External repositories retain their respective licenses.
 
 ## Data and figures
 

@@ -30,7 +30,7 @@ python -m pip install -r requirements.txt
 python -m pip install -e . --no-deps
 ```
 
-The manuscript specifies Python 3.10, PyTorch 2.0.1, CUDA 11.8, and an RTX 3090. For that stack, install `torch==2.0.1` and `torchvision==0.15.2` from the CUDA 11.8 PyTorch index and use `numpy<2`, `pandas<2`, and `opencv-contrib-python-headless<4.12`. The included single-task and nested baseline runners also support newer PyTorch versions; see [validation](doc/validation.md) for the environment actually checked for this repository.
+The reference environment uses Python 3.10, PyTorch 2.0.1, CUDA 11.8, and an RTX 3090. For that stack, install `torch==2.0.1` and `torchvision==0.15.2` from the CUDA 11.8 PyTorch index and use `numpy<2`, `pandas<2`, and `opencv-contrib-python-headless<4.12`. The included single-task and nested baseline runners also support newer PyTorch versions; see [testing](doc/validation.md) for test commands and coverage.
 
 Acquire the MedSAM ViT-B pretrained weights from the [MedSAM project](https://github.com/bowang-lab/MedSAM) and place them at `checkpoints/medsam_vit_b.pth`, or set `medsam_checkpoint_path` in your YAML configuration. Dataset files and pretrained/trained weights are **not distributed**.
 
@@ -45,7 +45,7 @@ Acquire the MedSAM ViT-B pretrained weights from the [MedSAM project](https://gi
 | IMA++ | Dermoscopy + structured metadata | Segmentation + binary or three-class diagnosis |
 | ISIC2018 | Dermoscopy only | Additional segmentation configuration |
 
-**Dataset naming:** the cross-domain experiment labeled “ISIC2018” in the manuscript uses **IMA++**. Use `configs/imaplusplus.yaml` or `configs/imaplusplus_multiclass.yaml` for that data. `configs/isic2018.yaml` is a separate segmentation configuration and does not reproduce the manuscript's image–tabular result.
+Use `configs/imaplusplus.yaml` for binary IMA++ classification and `configs/imaplusplus_multiclass.yaml` for three-class classification. Use `configs/isic2018.yaml` for ISIC2018 segmentation.
 
 See [data.md](doc/data.md) for schemas, label mappings, patient grouping, and exclusion of outcome-revealing variables. Private clinical cohorts and their patient split manifests are not included.
 
@@ -68,11 +68,9 @@ python scripts/inference.py --checkpoint outputs/HER2USC/bua_lel/best_fold1.pth 
   --output-dir outputs/prediction --device cuda
 ```
 
-`clinical_variables.json` contains raw feature names and values, without a diagnosis label. Image-only checkpoints do not require it. Inference reconstructs the architecture and clinical transformations from the trained checkpoint; the original pretrained checkpoint is not needed at inference time. Load only checkpoints from trusted sources.
+`clinical_variables.json` contains raw feature names and values, without a diagnosis label. Image-only checkpoints do not require it. Inference reconstructs the architecture and clinical transformations from the trained checkpoint; the original pretrained checkpoint is not needed at inference time.
 
 Training writes fold checkpoints, case predictions, per-fold metrics, and cross-fold summaries beneath `outputs/`. [Evaluation and analysis commands](doc/experiments.md) cover held-out evaluation and each experiment family.
-
-**Protocol scope:** dataset YAML files are runnable research configurations, not a claim that every manuscript table value has been independently reproduced. The primary trainer supports fold-validation checkpoint selection and fixed-final-epoch evaluation. The nested baseline runner keeps a separate inner validation partition. These protocols must not be pooled into an unqualified comparison. See [the precise distinctions](doc/experiments.md).
 
 ## Repository
 

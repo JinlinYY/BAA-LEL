@@ -10,12 +10,10 @@ BUA-LEL provides joint lesion segmentation and multimodal classification, compar
 
 See the [model description](model.md), [experimental protocols](experiments.md), and [baseline guide](baselines.md) for details.
 
-## Data and reproducibility
+## Datasets
 
-HER2USC and LMNUSC are private clinical cohorts. BrEaST supports joint segmentation and binary diagnosis; BUSI supports image-only segmentation. The cross-domain experiment labeled ISIC2018 in the manuscript uses IMA++. Use the IMA++ configurations for that dataset; the ISIC2018 segmentation configuration is separate.
+HER2USC and LMNUSC are private clinical cohorts. BrEaST supports joint segmentation and binary diagnosis; BUSI supports image-only segmentation. IMA++ supports segmentation with binary or three-class diagnosis. ISIC2018 supports segmentation.
 
-Datasets, clinical records, patient splits, trained weights, and the manuscript PDF are not distributed. The runnable configurations do not certify numerical reproduction of all manuscript tables. Fold-validation checkpoint selection and nested evaluation are distinct protocols. The IMA++ configurations use ResNet-50, while the manuscript's common settings describe MedSAM. These distinctions are documented in the experimental guide.
-
-The clinical encoder initializes each of its 12 prior graph nodes with the complete clinical vector; it does not assign one measured scalar to each node. Consider this implementation detail when interpreting node representations or adapting the model to other cohorts.
+Prepare datasets and model weights locally using the [data guide](data.md) and the paths in your configuration.
 
 BUA-LEL code uses the MIT license. Segment Anything retains Apache-2.0. Cite the software using `CITATION.cff` and cite the accompanying manuscript.

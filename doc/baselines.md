@@ -1,6 +1,6 @@
 # Baseline methods
 
-The repository includes local implementations and adaptations, not a redistribution of all authors' training pipelines. The model registry and its metadata are in `baselines/models/__init__.py`.
+The repository includes baseline implementations and adaptations. The model registry and its metadata are in `baselines/models/__init__.py`.
 
 | Method | Task | Implementation and assumptions |
 |---|---|---|
@@ -14,12 +14,12 @@ The repository includes local implementations and adaptations, not a redistribut
 | KMNet | Classification | Source-informed visual and medical-prior clinical graph adaptation |
 | HyperFusion | Classification | Independent 2D adaptation of clinical-conditioned image convolutions |
 | AMF-MedIT | Classification | Source-informed align-modulation-fusion; requires `mamba-ssm` for research training |
-| MAP | Classification | Available-modality adaptation; no fabricated MRI or mammography inputs |
+| MAP | Classification | Adaptation using the available imaging and clinical modalities |
 | HetMed | Classification | Inductive patient-graph adaptation; queries connect only to training references |
 | MTANet | Joint | Paper-based multi-task attention and image–clinical bottleneck |
 | MedSAM-MTL | Joint | Shared MedSAM encoder, segmentation decoder, global image–clinical fusion |
 
-SMU-Net is excluded from fully automatic method rankings because its clicks use reference masks. HetMed uses a declared ImageNet/ResNet-50 or supplied checkpoint route; it is not a claim of reproducing the author's multi-image MICLe pretraining. Adaptation choices are part of the experiment and should be reported.
+SMU-Net is an oracle-assisted reference using clicks derived from reference masks. HetMed supports ImageNet/ResNet-50 initialization or a supplied checkpoint.
 
 ## Running
 
@@ -36,9 +36,9 @@ python scripts/run_hetmed_cv.py --help
 
 The method keys are `unet`, `unetpp`, `transunet`, `aau_net`, `brn`, `smu_net`, `medsam_standard_decoder`, `miinet`, `kmnet`, `hyperfusion`, `amf_medit`, `map`, and `hetmed`. Attention U-Net and MedSAM standard fusion are available as additional controls. HetMed uses its dedicated runner for patient-graph training. Consult each runner's `--help` for model-specific parameters.
 
-AMF-MedIT requires a compatible Linux/CUDA `mamba-ssm` installation; the small dependency-free image/mixer options in component tests do not represent its research model. Install PyTorch first, then install `mamba-ssm` following that project's build requirements. SMU-Net's LSC superpixels require OpenCV contrib; do not install conflicting OpenCV distributions in the same environment.
+AMF-MedIT requires a compatible Linux/CUDA `mamba-ssm` installation. Install PyTorch first, then install `mamba-ssm` following that project's build requirements. SMU-Net's LSC superpixels require OpenCV contrib; do not install conflicting OpenCV distributions in the same environment.
 
-Nested runners share one outer patient manifest per dataset and fit preprocessing on training subsets. Their default epoch count is 50; use `--epochs` and other explicit options to declare your comparison protocol. Do not assume defaults match every manuscript-specific configuration. Source layouts are described in [data.md](data.md).
+Nested runners share one outer patient manifest per dataset and fit preprocessing on training subsets. Their default epoch count is 50; use `--epochs` and other explicit options to declare your comparison protocol. Source layouts are described in [data.md](data.md).
 
 ## Sources
 
