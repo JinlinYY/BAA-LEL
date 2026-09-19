@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use BAA-LEL in your research, please cite this software and the accompanying manuscript."
-title: "BAA-LEL: Boundary-Uncertainty-Aware Lesion Evidence Learning for Breast Ultrasound Segmentation and Multimodal Classification"
+title: "BAA-LEL: Boundary-Ambiguity-Aware Lesion Evidence Learning for Breast Ultrasound Segmentation and Multimodal Classification"
 type: software
 authors:
   - family-names: Ye

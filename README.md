@@ -1,6 +1,6 @@
 # BAA-LEL
 
-**Boundary-Uncertainty-Aware Lesion Evidence Learning for Breast Ultrasound Segmentation and Multimodal Classification**
+**Boundary-Ambiguity-Aware Lesion Evidence Learning for Breast Ultrasound Segmentation and Multimodal Classification**
 
 PyTorch implementation of BAA-LEL for joint lesion segmentation and multimodal classification.
 
@@ -13,7 +13,7 @@ PyTorch implementation of BAA-LEL for joint lesion segmentation and multimodal c
 BAA-LEL organizes segmentation-derived spatial information into structured lesion evidence for multimodal classification:
 
 1. **Lesion-prior-aware semantic feature encoding:** a MedSAM ViT-B encoder supplies segmentation features and classification features from Transformer blocks 5, 8, and 11.
-2. **Uncertainty-calibrated margin geometry encoding:** an anchor-constrained boundary graph uses probability-derived ambiguity and ring-structured message passing. Its context refines the dense lesion prediction; geometry and ambiguity embeddings provide classification evidence.
+2. **Boundary-ambiguity-aware margin geometry encoding:** an anchor-constrained boundary graph uses probability-derived ambiguity and ring-structured message passing. Its context refines the dense lesion prediction; geometry and ambiguity embeddings provide classification evidence.
 3. **Scale-adaptive zonal morphology encoding:** the refined lesion prior defines core, boundary, and peritumoral regions for masked statistical pooling.
 4. **Morphology–clinical heterogeneous graph reasoning:** regional morphology, boundary evidence, and clinical representations interact before task-specific classification.
 
