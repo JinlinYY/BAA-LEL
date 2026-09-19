@@ -12,7 +12,7 @@ license = {file = "LICENSE"}
 dynamic = ["dependencies"]
 
 [project.urls]
-Repository = "https://github.com/JinlinYY/BUA-LEL"
+Repository = "https://github.com/JinlinYY/BAA-LEL"
 
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements.txt"]}

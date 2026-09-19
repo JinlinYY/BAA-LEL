@@ -24,7 +24,7 @@ The implementation includes joint training, image-only segmentation, component/m
 Use Python 3.10 or newer. Install matching PyTorch and torchvision builds for your accelerator, then:
 
 ```bash
-git clone https://github.com/JinlinYY/BUA-LEL.git BAA-LEL
+git clone https://github.com/JinlinYY/BAA-LEL.git BAA-LEL
 cd BAA-LEL
 python -m pip install -r requirements.txt
 python -m pip install -e . --no-deps
