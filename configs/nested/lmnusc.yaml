@@ -1,5 +1,5 @@
 dataset: LMNUSC
-method: bua_lel
+method: baa_lel
 data_root: data/source
 output_root: outputs/nested/LMNUSC
 split_root: outputs/nested/splits

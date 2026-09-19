@@ -1,5 +1,5 @@
 """
-Multi-region ROI pooling for BUA-LEL / BUA-LEL with MedSAM features.
+Multi-region ROI pooling for BAA-LEL / BAA-LEL with MedSAM features.
 
 Input:
     feat_map:

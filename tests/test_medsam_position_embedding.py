@@ -5,7 +5,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from bua_lel.models.backbones.medsam import MedSAMMultiScaleEncoder
+from baa_lel.models.backbones.medsam import MedSAMMultiScaleEncoder
 
 
 class _PatchEmbed(nn.Module):

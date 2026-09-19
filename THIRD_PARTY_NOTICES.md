@@ -6,7 +6,7 @@
 
 ## Pretrained encoders
 
-MedSAM and torchvision pretrained models are external dependencies. No encoder weights are redistributed. Users obtain the parameters separately under their providers' terms. The BUA-LEL adapter and task modules are provided under this repository's MIT license.
+MedSAM and torchvision pretrained models are external dependencies. No encoder weights are redistributed. Users obtain the parameters separately under their providers' terms. The BAA-LEL adapter and task modules are provided under this repository's MIT license.
 
 ## Baseline implementations
 
@@ -14,4 +14,4 @@ The baseline implementations include paper-based models and adaptations. Archite
 
 ## Data and figures
 
-Datasets, annotations, clinical records, source manuscript PDF, case-level results, and model weights are not distributed. `assets/framework.png` illustrates the BUA-LEL architecture. Dataset access and reuse remain governed by the respective providers.
+Datasets, annotations, clinical records, source manuscript PDF, case-level results, and model weights are not distributed. `assets/framework.png` illustrates the BAA-LEL architecture. Dataset access and reuse remain governed by the respective providers.

@@ -29,7 +29,7 @@ architecture_profile: paper
 clinical_preprocessing_profile: missing_aware
 save_oof_npz: true
 keep_fold_checkpoints: true
-experiment_name: bua_lel
+experiment_name: baa_lel
 score_w_seg: 0.3
 score_w_cls: 0.7
 boundary_radius_ratio: 0.15

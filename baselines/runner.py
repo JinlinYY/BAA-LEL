@@ -430,7 +430,7 @@ def run_benchmark(cfg: BenchmarkConfig):
         raise ValueError("single-task runner accepts segmentation or classification only")
     if metadata is None or metadata.get("task") != cfg.task:
         raise ValueError(f"method {cfg.method!r} is not a registered {cfg.task} baseline")
-    if cfg.method in {"hetmed", "bua_lel", "mtanet"}:
+    if cfg.method in {"hetmed", "baa_lel", "mtanet"}:
         raise ValueError(f"method {cfg.method!r} requires a dedicated runner")
     seed_everything(cfg.seed)
     device = torch.device(cfg.device)

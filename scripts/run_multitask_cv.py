@@ -1,4 +1,4 @@
-"""Run the formal BUA-LEL or MTANet nested five-fold protocol."""
+"""Run the formal BAA-LEL or MTANet nested five-fold protocol."""
 from __future__ import annotations
 
 import argparse
@@ -15,7 +15,7 @@ from baselines.multitask_runner import MultitaskConfig, run_multitask_benchmark
 def main():
     parser = argparse.ArgumentParser(description="Formal joint segmentation-classification CV")
     parser.add_argument("--dataset", required=True, choices=["HER2USC", "LMNUSC", "BrEaST", "BUSI", "IMAplusplus"])
-    parser.add_argument("--method", required=True, choices=["bua_lel", "medsam_mtl", "mtanet"])
+    parser.add_argument("--method", required=True, choices=["baa_lel", "medsam_mtl", "mtanet"])
     parser.add_argument("--data-root", default="data")
     parser.add_argument("--output-root", default="outputs/baselines")
     parser.add_argument("--split-root")

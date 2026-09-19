@@ -3,8 +3,8 @@ import argparse,json,sys
 from dataclasses import replace,asdict
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
-from bua_lel.config import load_config,validate_inputs
-from bua_lel.engine.trainer import main as train
+from baa_lel.config import load_config,validate_inputs
+from baa_lel.engine.trainer import main as train
 
 
 def main():

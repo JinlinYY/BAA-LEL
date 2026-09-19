@@ -1,7 +1,7 @@
 import numpy as np
 import unittest
 
-from bua_lel.utils.metrics_seg import binary_surface_distance_metrics
+from baa_lel.utils.metrics_seg import binary_surface_distance_metrics
 from baselines.metrics import segmentation_case_metrics
 
 

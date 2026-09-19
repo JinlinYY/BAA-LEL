@@ -6,7 +6,7 @@ import numpy as np,torch
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-from bua_lel.engine.inference import load_model,predict
+from baa_lel.engine.inference import load_model,predict
 
 
 def main():

@@ -5,7 +5,7 @@ import cv2
 import numpy as np
 import pandas as pd
 import torch
-from bua_lel.engine.trainer import TrainConfig, build_model
+from baa_lel.engine.trainer import TrainConfig, build_model
 
 
 def load_model(checkpoint, device='cpu'):

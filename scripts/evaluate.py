@@ -3,8 +3,8 @@ import argparse,json,sys
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 import cv2,numpy as np,pandas as pd
-from bua_lel.engine.inference import load_model,predict
-from bua_lel.data.preprocessing import read_excel_df
+from baa_lel.engine.inference import load_model,predict
+from baa_lel.data.preprocessing import read_excel_df
 from baselines.metrics import classification_metrics,segmentation_case_metrics
 
 

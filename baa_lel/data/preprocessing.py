@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 from torch.utils.data import Subset
 
-from bua_lel.data import DualTaskDataset
+from baa_lel.data import DualTaskDataset
 
 def norm_pid(x) -> str:
     return str(x).strip()

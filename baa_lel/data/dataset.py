@@ -148,7 +148,7 @@ class DualTaskDataset(Dataset):
     def _print_stats(self):
         binc = np.bincount(self.all_labels, minlength=3)
 
-        print(f"\n📊 {self.mode.upper()} mode - BUA-LEL Dataset without clinical missingness:")
+        print(f"\n📊 {self.mode.upper()} mode - BAA-LEL Dataset without clinical missingness:")
         print(f"   - Clinical rows: {len(self.patient_ids)}")
         print(f"   - Image files: {len(self.image_path_dict)}")
         print(f"   - Mask files: {len(self.mask_path_dict)}")

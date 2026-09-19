@@ -2,17 +2,17 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from bua_lel.models.heads import LesionSegmentationDecoder, EnhancedClassifier
-from bua_lel.models.morphology.zonal_morphology import ZonalMorphologyEncoder
-from bua_lel.models.backbones.medsam import MedSAMMultiScaleEncoder
-from bua_lel.models.backbones.resnet50_encoder import ResNet50MultiScaleEncoder
-from bua_lel.models.clinical.clinical_graph import ClinicalVariableGraphEncoder
-from bua_lel.models.fusion.morph_clinical_graph import MorphClinicalHeteroGraph
-from bua_lel.models.boundary import AnchorConstrainedBoundaryGraph
-from bua_lel.models.fusion.token_fusion import TokenFusion
+from baa_lel.models.heads import LesionSegmentationDecoder, EnhancedClassifier
+from baa_lel.models.morphology.zonal_morphology import ZonalMorphologyEncoder
+from baa_lel.models.backbones.medsam import MedSAMMultiScaleEncoder
+from baa_lel.models.backbones.resnet50_encoder import ResNet50MultiScaleEncoder
+from baa_lel.models.clinical.clinical_graph import ClinicalVariableGraphEncoder
+from baa_lel.models.fusion.morph_clinical_graph import MorphClinicalHeteroGraph
+from baa_lel.models.boundary import AnchorConstrainedBoundaryGraph
+from baa_lel.models.fusion.token_fusion import TokenFusion
 
 
-class BUALEL(nn.Module):
+class BAALEL(nn.Module):
     """Joint lesion segmentation and morphology-clinical evidence learning.
 
     Returns segmentation logits, class logits, and an evidence dictionary.

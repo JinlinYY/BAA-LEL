@@ -3,7 +3,7 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "bua-lel"
+name = "baa-lel"
 version = "0.1.0"
 description = "Boundary-Uncertainty-Aware Lesion Evidence Learning"
 readme = "README.md"
@@ -18,7 +18,7 @@ Repository = "https://github.com/JinlinYY/BUA-LEL"
 dependencies = {file = ["requirements.txt"]}
 
 [tool.setuptools.packages.find]
-include = ["bua_lel*", "baselines*", "third_party*"]
+include = ["baa_lel*", "baselines*", "third_party*"]
 
 [tool.setuptools.package-data]
 "third_party.segment_anything" = ["LICENSE", "NOTICE"]

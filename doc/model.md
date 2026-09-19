@@ -4,7 +4,7 @@
 
 | Manuscript component | Implementation |
 |---|---|
-| BUA-LEL | `bua_lel/models/bua_lel.py:BUALEL` |
+| BAA-LEL | `baa_lel/models/baa_lel.py:BAALEL` |
 | Lesion-prior-aware semantic feature encoding | `backbones/medsam.py:MedSAMMultiScaleEncoder` |
 | Anchor-constrained boundary graph | `boundary/anchor_boundary_graph.py:AnchorConstrainedBoundaryGraph` |
 | Scale-adaptive zonal morphology encoding | `morphology/zonal_morphology.py:ZonalMorphologyEncoder` |
@@ -15,9 +15,9 @@
 ## Tensor interface
 
 ```python
-from bua_lel.models import BUALEL
+from baa_lel.models import BAALEL
 
-model = BUALEL(
+model = BAALEL(
     clinical_dim=12, num_classes=3,
     medsam_checkpoint_path="checkpoints/medsam_vit_b.pth",
     freeze_medsam=True, unfreeze_medsam_last_n=1,
@@ -31,7 +31,7 @@ seg_logits, cls_logits, evidence = model(
 )
 ```
 
-The encoder resizes the image to its input grid; masks remain at the configured dataset resolution. The image encoder receives the loader's [0,1] tensor. `Sam.preprocess()` is not invoked by the BUA-LEL encoder wrapper, so its RGB pixel-mean normalization is not applied. Do not add another normalization step when reproducing this implementation.
+The encoder resizes the image to its input grid; masks remain at the configured dataset resolution. The image encoder receives the loader's [0,1] tensor. `Sam.preprocess()` is not invoked by the BAA-LEL encoder wrapper, so its RGB pixel-mean normalization is not applied. Do not add another normalization step when reproducing this implementation.
 
 The boundary ambiguity measure is `1 - abs(2 * P_low - 1)`. It measures foreground-probability ambiguity. Boundary offsets contribute to anchor regularization; the final mask is predicted by dense refinement using graph context.
 

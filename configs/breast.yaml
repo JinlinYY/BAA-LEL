@@ -4,7 +4,7 @@ num_classes: 2
 image_dir: data/BrEaST/images
 mask_dir: data/BrEaST/masks
 clinical_excel: data/BrEaST/clinical.csv
-save_dir: outputs/BrEaST/bua_lel
+save_dir: outputs/BrEaST/baa_lel
 fold_manifest_path: outputs/splits/BrEaST_seed42.json
 benchmark_output_root: outputs/comparison
 clinical_exclude_columns:

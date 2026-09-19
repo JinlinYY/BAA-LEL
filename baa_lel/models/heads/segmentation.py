@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from bua_lel.models.backbones.medsam import ConvGNAct
+from baa_lel.models.backbones.medsam import ConvGNAct
 
 
 class UpFuseBlock(nn.Module):

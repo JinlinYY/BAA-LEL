@@ -2,7 +2,7 @@
 from dataclasses import asdict, fields
 from pathlib import Path
 import yaml
-from bua_lel.engine.trainer import TrainConfig, validate_train_config
+from baa_lel.engine.trainer import TrainConfig, validate_train_config
 
 
 def load_config(path, overrides=None):
@@ -30,7 +30,7 @@ def load_config(path, overrides=None):
 
 
 def validate_inputs(cfg):
-    from bua_lel.data.preprocessing import read_excel_df, build_pid_and_labels
+    from baa_lel.data.preprocessing import read_excel_df, build_pid_and_labels
     for value in (cfg.image_dir, cfg.mask_dir, cfg.clinical_excel):
         if not Path(value).exists():
             raise FileNotFoundError(value)

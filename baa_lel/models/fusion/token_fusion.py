@@ -2,7 +2,7 @@
 import torch
 import torch.nn as nn
 
-from bua_lel.models.fusion.morph_clinical_graph import MorphClinicalHeteroGraph
+from baa_lel.models.fusion.morph_clinical_graph import MorphClinicalHeteroGraph
 
 
 class TokenFusion(nn.Module):

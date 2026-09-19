@@ -6,14 +6,14 @@ from torch.utils.data import DataLoader
 from sklearn.metrics import f1_score, accuracy_score, roc_auc_score, confusion_matrix
 
 from torch.nn import Module
-from bua_lel.utils.meters import AverageMeter
-from bua_lel.utils.metrics_seg import (
+from baa_lel.utils.meters import AverageMeter
+from baa_lel.utils.metrics_seg import (
     dice_score_from_logits,
     iou_score_from_logits,
     seg_precision_recall_from_logits,
 )
-from bua_lel.utils.metrics_cls import compute_classwise_sens_spec
-from bua_lel.engine.losses import segmentation_loss_per_sample
+from baa_lel.utils.metrics_cls import compute_classwise_sens_spec
+from baa_lel.engine.losses import segmentation_loss_per_sample
 from baselines.metrics import segmentation_case_metrics
 
 

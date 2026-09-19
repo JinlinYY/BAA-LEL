@@ -10,7 +10,7 @@ from baselines.runner import BenchmarkConfig, run_benchmark
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Leakage-safe five-fold BUA-LEL baseline benchmark")
+    parser = argparse.ArgumentParser(description="Leakage-safe five-fold BAA-LEL baseline benchmark")
     parser.add_argument("--dataset", required=True, choices=["HER2USC", "LMNUSC", "BrEaST", "BUSI", "ISIC2018", "IMAplusplus"])
     parser.add_argument("--method", required=True)
     parser.add_argument("--task", required=True, choices=["segmentation", "classification"])

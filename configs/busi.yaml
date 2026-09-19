@@ -4,7 +4,7 @@ num_classes: 3
 image_dir: data/BUSI/images
 mask_dir: data/BUSI/masks
 clinical_excel: data/BUSI/clinical.csv
-save_dir: outputs/BUSI/bua_lel
+save_dir: outputs/BUSI/baa_lel
 fold_manifest_path: outputs/splits/BUSI_seed42.json
 benchmark_output_root: outputs/comparison
 modality: ultrasound_only

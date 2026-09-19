@@ -39,7 +39,7 @@ The single-fold evaluation and inference commands below load checkpoints from th
 
 ```bash
 python scripts/evaluate.py \
-  --checkpoint outputs/HER2USC/bua_lel/best_fold1.pth \
+  --checkpoint outputs/HER2USC/baa_lel/best_fold1.pth \
   --image-dir data/HER2USC/images --mask-dir data/HER2USC/masks \
   --clinical-table data/HER2USC/clinical.csv \
   --ids /path/to/held_out_ids.txt --output-dir outputs/evaluation --device cuda
@@ -64,16 +64,16 @@ Other configurations cover boundary ambiguity, geometry/ambiguity evidence, each
 
 ```bash
 python analysis/calibration.py --task classification \
-  --predictions outputs/HER2USC/bua_lel/oof_predictions.npz \
+  --predictions outputs/HER2USC/baa_lel/oof_predictions.npz \
   --output-dir outputs/calibration
 ```
 
-Classification uses top-label confidence for ECE and the summed multiclass Brier score. Segmentation input is an NPZ with `probabilities` and binary `targets` arrays of the same shape; its ECE is foreground-probability calibration. The streaming accumulator in `bua_lel/utils/calibration.py` supports large pixel collections. Neither procedure applies temperature fitting. Any learned recalibration must use a separate calibration partition.
+Classification uses top-label confidence for ECE and the summed multiclass Brier score. Segmentation input is an NPZ with `probabilities` and binary `targets` arrays of the same shape; its ECE is foreground-probability calibration. The streaming accumulator in `baa_lel/utils/calibration.py` supports large pixel collections. Neither procedure applies temperature fitting. Any learned recalibration must use a separate calibration partition.
 
 ## Paired statistical comparisons
 
 ```bash
-python analysis/statistical_comparison.py --method outputs/bua_lel/cases.csv \
+python analysis/statistical_comparison.py --method outputs/baa_lel/cases.csv \
   --baseline outputs/miinet/cases.csv --baseline outputs/mtanet/cases.csv \
   --metrics ACC Macro-F1 Macro-AUC --resamples 10000 \
   --output outputs/statistical_comparison.csv

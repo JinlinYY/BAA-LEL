@@ -17,27 +17,27 @@ from torch.utils.data import DataLoader
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 
-from bua_lel.data import DualTaskDataset
-from bua_lel.data.paired_transforms import build_training_transform
-from bua_lel.models.bua_lel import BUALEL
-from bua_lel.models.medsam_mtl import MedSAMMTLModel
+from baa_lel.data import DualTaskDataset
+from baa_lel.data.paired_transforms import build_training_transform
+from baa_lel.models.baa_lel import BAALEL
+from baa_lel.models.medsam_mtl import MedSAMMTLModel
 
-from bua_lel.utils.seed import seed_everything
-from bua_lel.data.preprocessing import (
+from baa_lel.utils.seed import seed_everything
+from baa_lel.data.preprocessing import (
     build_pid_and_labels,
     fit_fold_cat_maps,
     fit_fold_num_scaler,
     read_excel_df,
     subset_by_pid_set,
 )
-from bua_lel.utils.optim import (
+from baa_lel.utils.optim import (
     freeze_bn_running_stats,
     build_optimizer_param_groups,
 )
-from bua_lel.utils.roc import plot_multiclass_roc
+from baa_lel.utils.roc import plot_multiclass_roc
 
-from bua_lel.engine.losses import make_nomissing_loss_fn
-from bua_lel.engine.train_eval import train_one_epoch, evaluate
+from baa_lel.engine.losses import make_nomissing_loss_fn
+from baa_lel.engine.train_eval import train_one_epoch, evaluate
 from baselines.splits import (
     create_or_load_folds,
     create_or_load_group_folds,
@@ -56,7 +56,7 @@ class TrainConfig:
     mask_dir: str = str(PROJECT_ROOT / "data" / "masks")
     clinical_excel: str = str(PROJECT_ROOT / "data" / "clinical.xlsx")
 
-    save_dir: str = "outputs/bua_lel"
+    save_dir: str = "outputs/baa_lel"
     num_workers: int = 4
 
     folds: int = 5
@@ -121,7 +121,7 @@ class TrainConfig:
 
     medsam_input_size: Optional[int] = 1024
     architecture_profile: str = "extended"
-    model_family: str = "bua_lel"
+    model_family: str = "baa_lel"
     training_task: str = "joint"
     visual_backbone: str = "medsam_vit_b"
     visual_checkpoint_path: Optional[str] = None
@@ -239,7 +239,7 @@ def validate_train_config(cfg: TrainConfig) -> None:
                 f"selected_folds must contain unique fold identifiers in 1..{cfg.folds}, "
                 f"got {cfg.selected_folds!r}"
             )
-    if cfg.model_family not in {"bua_lel", "medsam_standard_decoder_fusion"}:
+    if cfg.model_family not in {"baa_lel", "medsam_standard_decoder_fusion"}:
         raise ValueError(f"unsupported model_family: {cfg.model_family!r}")
     if cfg.training_task not in {"joint", "classification_only", "segmentation_only"}:
         raise ValueError(f"unsupported training_task: {cfg.training_task!r}")
@@ -344,7 +344,7 @@ def build_model(cfg: TrainConfig, fold_ds: DualTaskDataset) -> nn.Module:
             image_size=cfg.medsam_input_size or 1024,
             cls_dropout=0.3,
         )
-    return BUALEL(
+    return BAALEL(
         clinical_dim=fold_ds.get_feature_dim(),
         numeric_slice=fold_ds.numeric_slice,
         onehot_slices_dict=fold_ds.onehot_slices,
@@ -907,8 +907,8 @@ def main(cfg: TrainConfig):
 
         if cfg.experiment_name == "full":
             fingerprint = manifest["split_fingerprint"]
-            cls_dir = Path(cfg.benchmark_output_root) / cfg.dataset_name / "classification" / "bua_lel"
-            seg_dir = Path(cfg.benchmark_output_root) / cfg.dataset_name / "segmentation" / "bua_lel"
+            cls_dir = Path(cfg.benchmark_output_root) / cfg.dataset_name / "classification" / "baa_lel"
+            seg_dir = Path(cfg.benchmark_output_root) / cfg.dataset_name / "segmentation" / "baa_lel"
             cls_dir.mkdir(parents=True, exist_ok=True)
             seg_dir.mkdir(parents=True, exist_ok=True)
             cls_oof = oof_frame[["pid", "fold", "y_true", "y_pred"]].copy()
@@ -932,8 +932,8 @@ def main(cfg: TrainConfig):
             save_per_class_metrics(cls_dir / "per_class_metrics.csv", cls_result["per_class"])
             for name, values in cls_result["per_class"].items():
                 cls_flat.update({f"class_{name}_{key}": value for key, value in values.items()})
-            cls_summary = {"dataset": cfg.dataset_name, "task": "classification", "method": "bua_lel", "fold_fingerprint": fingerprint, **{k: round(float(v), 3) for k, v in cls_flat.items()}}
-            seg_summary = {"dataset": cfg.dataset_name, "task": "segmentation", "method": "bua_lel", "fold_fingerprint": fingerprint, **{k: round(float(v), 3) for k, v in seg_result.items()}}
+            cls_summary = {"dataset": cfg.dataset_name, "task": "classification", "method": "baa_lel", "fold_fingerprint": fingerprint, **{k: round(float(v), 3) for k, v in cls_flat.items()}}
+            seg_summary = {"dataset": cfg.dataset_name, "task": "segmentation", "method": "baa_lel", "fold_fingerprint": fingerprint, **{k: round(float(v), 3) for k, v in seg_result.items()}}
             (cls_dir / "summary.json").write_text(json.dumps(cls_summary, indent=2, ensure_ascii=False), encoding="utf-8")
             (seg_dir / "summary.json").write_text(json.dumps(seg_summary, indent=2, ensure_ascii=False), encoding="utf-8")
 

@@ -5,7 +5,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from bua_lel.models.bua_lel import BUALEL
+from baa_lel.models.baa_lel import BAALEL
 
 
 class DiceLossPerSample(nn.Module):
@@ -106,7 +106,7 @@ def make_nomissing_loss_fn(
 ) -> Callable:
     """Make nomissing loss fn."""
     def _loss_fn(
-        model: BUALEL,
+        model: BAALEL,
         x_img: torch.Tensor,
         seg_gt: torch.Tensor,
         has_mask: torch.Tensor,

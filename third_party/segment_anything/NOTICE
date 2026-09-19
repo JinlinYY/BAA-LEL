@@ -3,7 +3,7 @@ Copyright (c) Meta Platforms, Inc. and affiliates.
 Source: https://github.com/facebookresearch/segment-anything
 License: Apache License, Version 2.0 (see LICENSE in this directory).
 
-BUA-LEL includes a local adaptation of the Segment Anything package.
+BAA-LEL includes a local adaptation of the Segment Anything package.
 The builder accepts explicit local checkpoints, and predictor imports are
-relative to this package. BUA-LEL retains the ViT image encoder for its own
+relative to this package. BAA-LEL retains the ViT image encoder for its own
 lesion-prior and morphology pathways. No model weights are distributed.

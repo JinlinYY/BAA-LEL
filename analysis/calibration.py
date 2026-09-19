@@ -6,7 +6,7 @@ import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-from bua_lel.utils.calibration import BinaryCalibrationAccumulator
+from baa_lel.utils.calibration import BinaryCalibrationAccumulator
 
 
 def main():

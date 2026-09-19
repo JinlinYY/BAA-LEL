@@ -2,7 +2,7 @@
 import numpy as np
 import pandas as pd
 import pytest
-from bua_lel.utils.calibration import BinaryCalibrationAccumulator
+from baa_lel.utils.calibration import BinaryCalibrationAccumulator
 from analysis.statistical_comparison import compare
 
 

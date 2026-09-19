@@ -3,7 +3,7 @@ import argparse,json,sys,time
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 import numpy as np,torch
-from bua_lel.engine.inference import load_model
+from baa_lel.engine.inference import load_model
 
 
 def main():

@@ -5,8 +5,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from bua_lel.models.backbones.medsam import MedSAMMultiScaleEncoder
-from bua_lel.models.heads import EnhancedClassifier, LesionSegmentationDecoder, build_medsam_fusion_projections
+from baa_lel.models.backbones.medsam import MedSAMMultiScaleEncoder
+from baa_lel.models.heads import EnhancedClassifier, LesionSegmentationDecoder, build_medsam_fusion_projections
 
 
 class MedSAMMTLModel(nn.Module):

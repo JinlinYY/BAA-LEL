@@ -1,4 +1,4 @@
-"""ImageNet ResNet-50 adapter for the shared BUA-LEL encoder contract."""
+"""ImageNet ResNet-50 adapter for the shared BAA-LEL encoder contract."""
 from __future__ import annotations
 
 from pathlib import Path
@@ -8,7 +8,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from bua_lel.models.backbones.medsam import ConvGNAct
+from baa_lel.models.backbones.medsam import ConvGNAct
 
 
 class ResNet50MultiScaleEncoder(nn.Module):

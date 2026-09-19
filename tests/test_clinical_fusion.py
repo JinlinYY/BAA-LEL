@@ -8,8 +8,8 @@ import pandas as pd
 import torch
 import torch.nn as nn
 
-from bua_lel.models.bua_lel import BUALEL
-from bua_lel.engine.trainer import TrainConfig, build_model
+from baa_lel.models.baa_lel import BAALEL
+from baa_lel.engine.trainer import TrainConfig, build_model
 
 
 class _Encoder(nn.Module):
@@ -74,8 +74,8 @@ def _build(**changes):
         "fusion_mode": "heterog",
     }
     kwargs.update(changes)
-    with patch("bua_lel.models.bua_lel.MedSAMMultiScaleEncoder", _Encoder):
-        return BUALEL(**kwargs)
+    with patch("baa_lel.models.baa_lel.MedSAMMultiScaleEncoder", _Encoder):
+        return BAALEL(**kwargs)
 
 
 def _build_forward_model(**changes):

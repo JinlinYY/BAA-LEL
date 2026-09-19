@@ -643,7 +643,7 @@ class BRNLoss(nn.Module):
 
 class MedSAMStandardDecoder(nn.Module):
     def __init__(self, checkpoint_path=None, base_channels=64, freeze_medsam=True, **_: object):
-        super().__init__(); from bua_lel.models.backbones.medsam import MedSAMMultiScaleEncoder
+        super().__init__(); from baa_lel.models.backbones.medsam import MedSAMMultiScaleEncoder
         self.encoder=MedSAMMultiScaleEncoder(checkpoint_path=checkpoint_path,freeze_medsam=freeze_medsam,return_cls_feat=False); self.decoder=nn.Sequential(nn.Conv2d(256,base_channels*2,3,padding=1),nn.ReLU(True),nn.ConvTranspose2d(base_channels*2,base_channels,4,2,1),nn.ReLU(True),nn.ConvTranspose2d(base_channels,base_channels//2,4,2,1),nn.ReLU(True),nn.Conv2d(base_channels//2,1,1))
 
     def forward(self,x): size=x.shape[-2:]; embedding=self.encoder(x,return_dict=True)["medsam_neck"]; return F.interpolate(self.decoder(embedding),size=size,mode="bilinear",align_corners=False)

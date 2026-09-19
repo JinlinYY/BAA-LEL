@@ -1,6 +1,6 @@
 # Quick start
 
-BUA-LEL provides joint lesion segmentation and multimodal classification, comparative baselines, ablations, calibration, paired statistical analysis, and evidence visualization.
+BAA-LEL provides joint lesion segmentation and multimodal classification, comparative baselines, ablations, calibration, paired statistical analysis, and evidence visualization.
 
 1. Install a matching PyTorch/torchvision pair, then run `pip install -r requirements.txt` and `pip install -e . --no-deps`.
 2. Prepare local images, masks, and clinical tables using the [data guide](data.md), and obtain the MedSAM pretrained weights separately.
@@ -16,4 +16,4 @@ HER2USC and LMNUSC are private clinical cohorts. BrEaST supports joint segmentat
 
 Prepare datasets and model weights locally using the [data guide](data.md) and the paths in your configuration.
 
-BUA-LEL code uses the MIT license. Segment Anything retains Apache-2.0. Cite the software using `CITATION.cff` and cite the accompanying manuscript.
+BAA-LEL code uses the MIT license. Segment Anything retains Apache-2.0. Cite the software using `CITATION.cff` and cite the accompanying manuscript.

@@ -27,8 +27,8 @@ from baselines.protocol import (
 )
 from baselines.results import normalize_oof_frame, save_per_class_metrics
 from baselines.runner import _dice_loss, seed_everything
-from bua_lel.data.paired_transforms import build_training_transform
-from bua_lel.engine.losses import segmentation_loss_per_sample
+from baa_lel.data.paired_transforms import build_training_transform
+from baa_lel.engine.losses import segmentation_loss_per_sample
 
 
 @dataclass
@@ -349,10 +349,10 @@ def _build(
             medsam_checkpoint_path=cfg.medsam_checkpoint, image_size=cfg.medsam_input_size,
             freeze_medsam=True, unfreeze_medsam_last_n=0,
         )
-    if cfg.method != "bua_lel":
-        raise ValueError("multitask runner only supports bua_lel, medsam_mtl and mtanet")
+    if cfg.method != "baa_lel":
+        raise ValueError("multitask runner only supports baa_lel, medsam_mtl and mtanet")
     return build_model(
-        "bua_lel", "multitask", clinical_dim=clinical_dim,
+        "baa_lel", "multitask", clinical_dim=clinical_dim,
         numeric_slice=numeric_slice or (0, clinical_dim),
         onehot_slices_dict=onehot_slices_dict or {},
         num_classes=num_classes, medsam_checkpoint_path=cfg.medsam_checkpoint, image_size=cfg.medsam_input_size,
@@ -451,7 +451,7 @@ def _loss(
         coarse = (coarse_per * has_mask).sum() / has_mask.sum().clamp_min(1)
         segmentation = segmentation + .25 * coarse
     classification = class_criterion(cls_logits, labels)
-    if method in {"bua_lel", "medsam_mtl"} and hasattr(model, "get_total_loss"):
+    if method in {"baa_lel", "medsam_mtl"} and hasattr(model, "get_total_loss"):
         anchor_loss = (
             extra.get(
                 "boundary_anchor_loss",
@@ -464,7 +464,7 @@ def _loss(
             segmentation,
             classification,
             Lanchor=anchor_loss,
-            lambda_anchor=cfg.lambda_anchor if method == "bua_lel" else 0.0,
+            lambda_anchor=cfg.lambda_anchor if method == "baa_lel" else 0.0,
         )
     else:
         total = segmentation + classification
@@ -655,7 +655,7 @@ def validate_multitask_oof(
 
 
 def run_multitask_benchmark(cfg: MultitaskConfig):
-    if cfg.method not in {"bua_lel", "medsam_mtl", "mtanet"}: raise ValueError("only BUA-LEL, MedSAM-MTL and MTANet are valid multi-task methods")
+    if cfg.method not in {"baa_lel", "medsam_mtl", "mtanet"}: raise ValueError("only BAA-LEL, MedSAM-MTL and MTANet are valid multi-task methods")
     if cfg.train_augmentation_profile not in {
         "none", "ultrasound_mild", "ultrasound_gentle", "dermoscopy_mild",
     }:
@@ -669,8 +669,8 @@ def run_multitask_benchmark(cfg: MultitaskConfig):
         raise ValueError("segmentation loss weights must be non-negative and sum to 1")
     if cfg.modality not in {"multimodal", "ultrasound_only", "clinical_only"}:
         raise ValueError("unknown modality")
-    if cfg.method != "bua_lel" and cfg.modality != "multimodal":
-        raise ValueError("single-modality settings are supported only by bua_lel")
+    if cfg.method != "baa_lel" and cfg.modality != "multimodal":
+        raise ValueError("single-modality settings are supported only by baa_lel")
     device = torch.device(cfg.device)
     records = protocol_records(
         cfg.dataset, cfg.data_root, clinical_name=cfg.clinical_filename

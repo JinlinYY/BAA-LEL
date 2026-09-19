@@ -7,11 +7,11 @@ import pandas as pd
 import pytest
 import torch
 from torch import nn
-from bua_lel.config import load_config
-from bua_lel.engine import trainer
-from bua_lel.engine.inference import clinical_tensor
-from bua_lel.engine.losses import make_nomissing_loss_fn
-from bua_lel.data.dataset import DualTaskDataset
+from baa_lel.config import load_config
+from baa_lel.engine import trainer
+from baa_lel.engine.inference import clinical_tensor
+from baa_lel.engine.losses import make_nomissing_loss_fn
+from baa_lel.data.dataset import DualTaskDataset
 
 
 class SmallJointModel(nn.Module):
@@ -97,7 +97,7 @@ def test_binary_one_mask_is_foreground(tmp_path):
 
 def test_inference_reconstructs_a_fold_checkpoint(tmp_path,monkeypatch):
     from dataclasses import asdict
-    from bua_lel.engine import inference
+    from baa_lel.engine import inference
     cfg=trainer.TrainConfig(num_classes=2)
     model=SmallJointModel(1,2).eval()
     path=tmp_path/'fold.pth'

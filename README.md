@@ -1,16 +1,16 @@
-# BUA-LEL
+# BAA-LEL
 
 **Boundary-Uncertainty-Aware Lesion Evidence Learning for Breast Ultrasound Segmentation and Multimodal Classification**
 
-PyTorch implementation of BUA-LEL for joint lesion segmentation and multimodal classification.
+PyTorch implementation of BAA-LEL for joint lesion segmentation and multimodal classification.
 
 [Quick start](doc/quickstart.md) · [Data preparation](doc/data.md) · [Experimental protocols](doc/experiments.md) · [Baseline methods](doc/baselines.md) · [Model implementation](doc/model.md)
 
-![BUA-LEL framework](assets/framework.png)
+![BAA-LEL framework](assets/framework.png)
 
 ## Method
 
-BUA-LEL organizes segmentation-derived spatial information into structured lesion evidence for multimodal classification:
+BAA-LEL organizes segmentation-derived spatial information into structured lesion evidence for multimodal classification:
 
 1. **Lesion-prior-aware semantic feature encoding:** a MedSAM ViT-B encoder supplies segmentation features and classification features from Transformer blocks 5, 8, and 11.
 2. **Uncertainty-calibrated margin geometry encoding:** an anchor-constrained boundary graph uses probability-derived ambiguity and ring-structured message passing. Its context refines the dense lesion prediction; geometry and ambiguity embeddings provide classification evidence.
@@ -24,8 +24,8 @@ The implementation includes joint training, image-only segmentation, component/m
 Use Python 3.10 or newer. Install matching PyTorch and torchvision builds for your accelerator, then:
 
 ```bash
-git clone https://github.com/JinlinYY/BUA-LEL.git
-cd BUA-LEL
+git clone https://github.com/JinlinYY/BUA-LEL.git BAA-LEL
+cd BAA-LEL
 python -m pip install -r requirements.txt
 python -m pip install -e . --no-deps
 ```
@@ -62,7 +62,7 @@ python scripts/cross_validate.py --config configs/her2usc.yaml
 python scripts/train.py --config configs/breast.yaml --fold 1
 
 # Predict one image using a trained fold's clinical preprocessing.
-python scripts/inference.py --checkpoint outputs/HER2USC/bua_lel/best_fold1.pth \
+python scripts/inference.py --checkpoint outputs/HER2USC/baa_lel/best_fold1.pth \
   --image data/HER2USC/images/example.png \
   --clinical-json /path/to/clinical_variables.json \
   --output-dir outputs/prediction --device cuda
@@ -75,14 +75,14 @@ Training writes fold checkpoints, case predictions, per-fold metrics, and cross-
 ## Repository
 
 ```text
-BUA-LEL/
+BAA-LEL/
 ├── README.md, LICENSE, CITATION.cff, requirements.txt
 ├── doc/                    # Data, method, protocols, baseline provenance
 ├── assets/                 # Method illustration
 ├── configs/                # Dataset and ablation configurations
-├── bua_lel/
+├── baa_lel/
 │   ├── data/               # Matched image/clinical data and fold preprocessing
-│   ├── models/             # BUA-LEL and MedSAM-MTL
+│   ├── models/             # BAA-LEL and MedSAM-MTL
 │   │   ├── backbones/
 │   │   ├── boundary/
 │   │   ├── morphology/
@@ -105,4 +105,4 @@ BUA-LEL/
 
 Use [CITATION.cff](CITATION.cff) to cite the software and cite the accompanying manuscript by its title above. Publication identifiers will be added when available.
 
-BUA-LEL code is released under the [MIT License](LICENSE). Segment Anything retains Apache-2.0; see [third-party notices](THIRD_PARTY_NOTICES.md). Dataset and model-weight licenses remain with their respective providers.
+BAA-LEL code is released under the [MIT License](LICENSE). Segment Anything retains Apache-2.0; see [third-party notices](THIRD_PARTY_NOTICES.md). Dataset and model-weight licenses remain with their respective providers.

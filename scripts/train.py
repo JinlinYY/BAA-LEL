@@ -1,4 +1,4 @@
-"""Train the folds selected by a BUA-LEL configuration."""
+"""Train the folds selected by a BAA-LEL configuration."""
 from cross_validate import main
 
 if __name__ == '__main__':

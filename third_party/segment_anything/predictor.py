@@ -1,4 +1,4 @@
-# Modified for BUA-LEL: package-relative imports and local checkpoint handling.
+# Modified for BAA-LEL: package-relative imports and local checkpoint handling.
 # -*- coding: utf-8 -*-
 # Copyright (c) Meta Platforms, Inc. and affiliates.
 # All rights reserved.

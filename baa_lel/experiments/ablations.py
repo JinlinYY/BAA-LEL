@@ -16,7 +16,7 @@ class AblationConfig:
     use_boundary_ambiguity: bool = True
     use_anchor_graph: bool = True
     use_zonal_evidence: bool = True
-    model_family: str = "bua_lel"
+    model_family: str = "baa_lel"
     visual_backbone: str = "medsam_vit_b"
     backbone_unfreeze_policy: str = "last_transformer_block"
 

@@ -1,7 +1,7 @@
 from typing import Any, Dict
 
-from bua_lel.models.bua_lel import BUALEL
-from bua_lel.models.medsam_mtl import MedSAMMTLModel
+from baa_lel.models.baa_lel import BAALEL
+from baa_lel.models.medsam_mtl import MedSAMMTLModel
 from baselines.models.classification import HetMedClassifier, MedSAMStandardFusion
 from baselines.models.official_classification import (
     AMFMedITClassifier,
@@ -36,7 +36,7 @@ MODEL_REGISTRY: Dict[str, Dict[str, Any]] = {
     },
     "multitask": {
         "mtanet": MTANet,
-        "bua_lel": BUALEL,
+        "baa_lel": BAALEL,
         "medsam_mtl": MedSAMMTLModel,
     },
 }
@@ -49,33 +49,33 @@ MODEL_METADATA = {
         "task": "segmentation", "interactive": False,
         "eligible_for_automatic_comparison": True,
         "implementation": "canonical_local", "source": "local",
-        "version": "bua-lel-unet-v1", "upstream_version": "canonical", "display_name": "U-Net",
+        "version": "baa-lel-unet-v1", "upstream_version": "canonical", "display_name": "U-Net",
     },
     "attention_unet": {
         "task": "segmentation", "interactive": False,
         "eligible_for_automatic_comparison": True,
         "implementation": "canonical_local", "source": "local",
-        "version": "bua-lel-attention-unet-v1", "upstream_version": "canonical", "display_name": "Attention U-Net",
+        "version": "baa-lel-attention-unet-v1", "upstream_version": "canonical", "display_name": "Attention U-Net",
     },
     "unetpp": {
         "task": "segmentation", "interactive": False,
         "eligible_for_automatic_comparison": True,
         "implementation": "canonical_local", "source": "local",
-        "version": "bua-lel-unetpp-v1", "upstream_version": "canonical", "display_name": "U-Net++",
+        "version": "baa-lel-unetpp-v1", "upstream_version": "canonical", "display_name": "U-Net++",
     },
     "transunet": {
         "task": "segmentation", "interactive": False,
         "eligible_for_automatic_comparison": True,
         "implementation": "author_source_informed_adapter",
         "source": "https://github.com/Beckschen/TransUNet",
-        "version": "bua-lel-transunet-v1", "upstream_version": "02ef0010b36eb8328b5e689eadaf613602edf9b8",
+        "version": "baa-lel-transunet-v1", "upstream_version": "02ef0010b36eb8328b5e689eadaf613602edf9b8",
         "display_name": "TransUNet",
     },
     "smu_net": {
         "task": "segmentation", "interactive": True,
         "eligible_for_automatic_comparison": False,
         "implementation": "paper_reimplementation",
-        "source": "https://doi.org/10.1109/TMI.2021.3116087", "version": "bua-lel-smu-v1",
+        "source": "https://doi.org/10.1109/TMI.2021.3116087", "version": "baa-lel-smu-v1",
         "upstream_version": "paper-2021",
         "display_name": "SMU-Net (3-click oracle)",
     },
@@ -84,14 +84,14 @@ MODEL_METADATA = {
         "eligible_for_automatic_comparison": True,
         "implementation": "author_source_informed_port",
         "source": "https://github.com/CGPxy/AAU-net",
-        "version": "bua-lel-aau-v1", "upstream_version": "0cf0121566a09cdd229e1bd57cac5318718d871a",
+        "version": "baa-lel-aau-v1", "upstream_version": "0cf0121566a09cdd229e1bd57cac5318718d871a",
         "display_name": "AAU-Net",
     },
     "brn": {
         "task": "segmentation", "interactive": False,
         "eligible_for_automatic_comparison": True,
         "implementation": "paper_reimplementation",
-        "source": "https://doi.org/10.1016/j.media.2022.102478", "version": "bua-lel-brn-v2",
+        "source": "https://doi.org/10.1016/j.media.2022.102478", "version": "baa-lel-brn-v2",
         "upstream_version": "paper-2022-resnet101-assumption",
         "display_name": "BRN",
     },
@@ -99,14 +99,14 @@ MODEL_METADATA = {
         "task": "segmentation", "interactive": False,
         "eligible_for_automatic_comparison": True,
         "implementation": "local_medsam_encoder_standard_decoder",
-        "source": "local", "version": "bua-lel-medsam-decoder-v2", "upstream_version": "local-medsam",
+        "source": "local", "version": "baa-lel-medsam-decoder-v2", "upstream_version": "local-medsam",
         "display_name": "MedSAM + standard decoder",
     },
     "medsam_standard_fusion": {
         "task": "classification", "interactive": False,
         "eligible_for_automatic_comparison": True,
         "implementation": "local_medsam_encoder_standard_concat_fusion",
-        "source": "local", "version": "bua-lel-medsam-fusion-v2", "upstream_version": "local-medsam",
+        "source": "local", "version": "baa-lel-medsam-fusion-v2", "upstream_version": "local-medsam",
         "display_name": "MedSAM + standard fusion",
     },
     "hetmed": {
@@ -114,7 +114,7 @@ MODEL_METADATA = {
         "eligible_for_automatic_comparison": True,
         "implementation": "author_source_informed_port",
         "source": "https://github.com/Sein-Kim/Multimodal-Medical",
-        "version": "bua-lel-hetmed-v5", "upstream_version": "c235485673e3f6040ab301c312b17bc62ef720d6",
+        "version": "baa-lel-hetmed-v5", "upstream_version": "c235485673e3f6040ab301c312b17bc62ef720d6",
         "display_name": "HetMed",
     },
     "miinet": {
@@ -122,7 +122,7 @@ MODEL_METADATA = {
         "eligible_for_automatic_comparison": True,
         "implementation": "author_source_informed_leakage_safe_port",
         "source": "https://github.com/JinlinYY/MIINet",
-        "version": "bua-lel-miinet-v1", "upstream_version": "239074d9ab8b9c6879b07f9b96eee8200154a877",
+        "version": "baa-lel-miinet-v1", "upstream_version": "239074d9ab8b9c6879b07f9b96eee8200154a877",
         "display_name": "MIINet",
     },
     "kmnet": {
@@ -130,7 +130,7 @@ MODEL_METADATA = {
         "eligible_for_automatic_comparison": True,
         "implementation": "author_source_informed_leakage_safe_port",
         "source": "https://github.com/JinlinYY/KMNet",
-        "version": "bua-lel-kmnet-v1", "upstream_version": "main-audited-2026-09-02",
+        "version": "baa-lel-kmnet-v1", "upstream_version": "main-audited-2026-09-02",
         "display_name": "KMNet",
     },
     "hyperfusion": {
@@ -138,7 +138,7 @@ MODEL_METADATA = {
         "eligible_for_automatic_comparison": True,
         "implementation": "independent_source_informed_port",
         "source": "https://github.com/daniel4725/HyperFusion",
-        "version": "bua-lel-hyperfusion-v3", "upstream_version": "96a102c766cbdd97882cab485cf063050a2adfa1",
+        "version": "baa-lel-hyperfusion-v3", "upstream_version": "96a102c766cbdd97882cab485cf063050a2adfa1",
         "display_name": "HyperFusion",
     },
     "amf_medit": {
@@ -146,7 +146,7 @@ MODEL_METADATA = {
         "eligible_for_automatic_comparison": True,
         "implementation": "author_source_informed_adapter",
         "source": "https://github.com/Jasmine-ycj/AMF-MedIT",
-        "version": "bua-lel-amf-medit-v3", "upstream_version": "6dfa7b6d366529c34c8064486e65ca1a77dc91dc",
+        "version": "baa-lel-amf-medit-v3", "upstream_version": "6dfa7b6d366529c34c8064486e65ca1a77dc91dc",
         "display_name": "AMF-MedIT",
     },
     "map": {
@@ -154,7 +154,7 @@ MODEL_METADATA = {
         "eligible_for_automatic_comparison": True,
         "implementation": "independent_source_informed_port",
         "source": "https://github.com/ZhangJD-ong/HER2-MAP-from-Multimodal-Breast-Data",
-        "version": "bua-lel-map-v3", "upstream_version": "9e07013568733b08a8aeda31660a1ea725b6a7d5",
+        "version": "baa-lel-map-v3", "upstream_version": "9e07013568733b08a8aeda31660a1ea725b6a7d5",
         "display_name": "MAP",
     },
     "mtanet": {
@@ -162,21 +162,21 @@ MODEL_METADATA = {
         "eligible_for_automatic_comparison": True,
         "implementation": "paper_reimplementation",
         "source": "https://doi.org/10.1109/TMI.2023.3317088",
-        "version": "bua-lel-mtanet-v1", "upstream_version": "paper-2024",
+        "version": "baa-lel-mtanet-v1", "upstream_version": "paper-2024",
         "display_name": "MTANet",
     },
-    "bua_lel": {
+    "baa_lel": {
         "task": "multitask", "interactive": False,
         "eligible_for_automatic_comparison": False,
-        "implementation": "bua_lel", "source": "local",
-        "version": "bua-lel-v1", "upstream_version": "not-applicable",
-        "display_name": "BUA-LEL",
+        "implementation": "baa_lel", "source": "local",
+        "version": "baa-lel-v1", "upstream_version": "not-applicable",
+        "display_name": "BAA-LEL",
     },
     "medsam_mtl": {
         "task": "multitask", "interactive": False,
         "eligible_for_automatic_comparison": True,
         "implementation": "local_shared_medsam_plain_multitask_baseline", "source": "local",
-        "version": "bua-lel-medsam-mtl-v1", "upstream_version": "local-medsam",
+        "version": "baa-lel-medsam-mtl-v1", "upstream_version": "local-medsam",
         "display_name": "MedSAM-MTL",
     },
 }

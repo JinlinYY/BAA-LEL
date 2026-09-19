@@ -6,7 +6,7 @@ Checks include:
 
 - Syntax parsing and `--help` execution of every research command.
 - Dataset and ablation YAML parsing.
-- A complete, randomly initialized MedSAM-based BUA-LEL forward pass at a 64×64 encoder input size, verifying segmentation/classification dimensions and finite boundary evidence.
+- A complete, randomly initialized MedSAM-based BAA-LEL forward pass at a 64×64 encoder input size, verifying segmentation/classification dimensions and finite boundary evidence.
 - Segmentation baseline output dimensions and inductive HetMed query/reference handling.
 - Clinical fusion, positional embedding interpolation, and activation checkpointing behavior.
 - Five-fold training, prediction coverage, and fold-specific checkpoint/preprocessor export on a 20-case synthetic cohort with a small surrogate network.

@@ -1,5 +1,5 @@
 dataset: HER2USC
-method: bua_lel
+method: baa_lel
 data_root: data/source
 output_root: outputs/nested/HER2USC
 split_root: outputs/nested/splits

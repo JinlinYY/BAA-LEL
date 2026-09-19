@@ -4,7 +4,7 @@ from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 import cv2
 import numpy as np
-from bua_lel.engine.inference import load_model,predict
+from baa_lel.engine.inference import load_model,predict
 
 
 def main():

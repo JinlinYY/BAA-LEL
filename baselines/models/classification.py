@@ -14,8 +14,8 @@ class MedSAMStandardFusion(nn.Module):
     """MedSAM global image feature plus clinical MLP and concatenation fusion."""
     def __init__(self, clinical_dim, num_classes=3, checkpoint_path=None, hidden_dim=256, freeze_medsam=True, **_):
         super().__init__()
-        from bua_lel.models.backbones.medsam import MedSAMMultiScaleEncoder
-        from bua_lel.models.heads import build_medsam_fusion_projections
+        from baa_lel.models.backbones.medsam import MedSAMMultiScaleEncoder
+        from baa_lel.models.heads import build_medsam_fusion_projections
         self.encoder = MedSAMMultiScaleEncoder(checkpoint_path=checkpoint_path, freeze_medsam=freeze_medsam, return_cls_feat=False)
         self.image_projection, self.clinical_projection = build_medsam_fusion_projections(clinical_dim, hidden_dim)
         self.classifier = nn.Sequential(nn.Linear(hidden_dim*2, hidden_dim), nn.ReLU(True), nn.Dropout(.3), nn.Linear(hidden_dim, num_classes))

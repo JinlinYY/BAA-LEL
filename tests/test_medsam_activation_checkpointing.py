@@ -4,7 +4,7 @@ from types import SimpleNamespace
 import torch
 import torch.nn as nn
 
-from bua_lel.models.backbones.medsam import MedSAMMultiScaleEncoder
+from baa_lel.models.backbones.medsam import MedSAMMultiScaleEncoder
 
 
 class _PatchEmbed(nn.Module):
